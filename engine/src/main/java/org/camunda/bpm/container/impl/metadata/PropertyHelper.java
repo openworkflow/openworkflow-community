@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.camunda.bpm.container.impl.ContainerIntegrationLogger;
 import org.camunda.bpm.engine.ProcessEngineException;
 import org.camunda.bpm.engine.impl.ProcessEngineLogger;
@@ -56,27 +55,34 @@ public class PropertyHelper {
 
   /**
    * Converts a value to the type of the given field.
-   * @param value
-   * @param field
-   * @return
+   *
+   * @param value The value as String to parse to the new given type
+   * @param clazz the class of the given type that the value should be parsed into
+   * @return the parsed value if the type is matched. If not, the value is returned as string
    */
   public static Object convertToClass(String value, Class<?> clazz) {
-    Object propertyValue;
-    if (clazz.isAssignableFrom(int.class)) {
-      propertyValue = Integer.parseInt(value);
+
+    if (clazz.isAssignableFrom(int.class) || clazz.isAssignableFrom(Integer.class)) {
+      return Integer.parseInt(value);
     }
-    else if (clazz.isAssignableFrom(long.class)) {
-      propertyValue = Long.parseLong(value);
+
+    if (clazz.isAssignableFrom(long.class) || clazz.isAssignableFrom(Long.class)) {
+      return Long.parseLong(value);
     }
-    else if (clazz.isAssignableFrom(float.class)) {
-      propertyValue = Float.parseFloat(value);
+
+    if (clazz.isAssignableFrom(float.class) || clazz.isAssignableFrom(Float.class)) {
+      return Float.parseFloat(value);
     }
-    else if (clazz.isAssignableFrom(boolean.class)) {
-      propertyValue = Boolean.parseBoolean(value);
-    } else {
-      propertyValue = value;
+
+    if (clazz.isAssignableFrom(boolean.class) || clazz.isAssignableFrom(Boolean.class)) {
+      return Boolean.parseBoolean(value);
     }
-    return propertyValue;
+
+    if (clazz.isAssignableFrom(double.class) || clazz.isAssignableFrom(Double.class)) {
+      return Double.parseDouble(value);
+    }
+
+    return value;
   }
 
   public static void applyProperty(Object configuration, String key, String stringValue) {

@@ -16,12 +16,15 @@
  */
 package org.camunda.bpm.container.impl.metadata;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.camunda.bpm.container.impl.metadata.PropertyHelper.applyProperties;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
 import org.camunda.bpm.engine.ProcessEngineConfiguration;
 import org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl;
+import org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration;
 import org.camunda.bpm.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.camunda.bpm.engine.impl.jobexecutor.DefaultJobExecutor;
 import org.camunda.bpm.engine.impl.jobexecutor.JobExecutor;
@@ -227,4 +230,68 @@ public class PropertyHelperTest {
     Assert.assertEquals(true, engineConfiguration.isDbIdentityUsed());
     Assert.assertEquals("someUrl", engineConfiguration.getJdbcUrl());
   }
+
+  @Test
+  public void shouldResolveHistoryCleanupDefaultNumberOfRetries() {
+    // given
+    var config = new StandaloneProcessEngineConfiguration();
+
+    // when
+    applyProperties(config, Map.of("historyCleanupDefaultNumberOfRetries", "5"));
+
+    // then
+    assertThat(config.getHistoryCleanupDefaultNumberOfRetries()).isEqualTo(5);
+  }
+
+  @Test
+  public void shouldResolveDoubleNewField() {
+    // given
+    var config = new TestConfigWithAutoboxingTypes();
+
+    // when
+    applyProperties(config, Map.of("doubleNewField", "6.66"));
+
+    // then
+    assertThat(config.getDoubleNewField()).isEqualTo(6.66D);
+  }
+
+  @Test
+  public void shouldResolveDoublePrimitiveNewField() {
+    // given
+    var config = new TestConfigWithAutoboxingTypes();
+
+    // when
+    applyProperties(config, Map.of("doublePrimitiveNewField", "-2"));
+
+    // then
+    assertThat(config.getDoublePrimitiveNewField()).isEqualTo(-2.0);
+  }
+
+  private static class TestConfigWithAutoboxingTypes extends StandaloneInMemProcessEngineConfiguration {
+
+    private Double doubleNewField;
+    private double doublePrimitiveNewField;
+
+    public TestConfigWithAutoboxingTypes() {
+      super();
+    }
+
+    public Double getDoubleNewField() {
+      return doubleNewField;
+    }
+
+    public TestConfigWithAutoboxingTypes setDoubleNewField(Double doubleNewField) {
+      this.doubleNewField = doubleNewField;
+      return this;
+    }
+
+    public double getDoublePrimitiveNewField() {
+      return doublePrimitiveNewField;
+    }
+
+    public void setDoublePrimitiveNewField(double doublePrimitiveNewField) {
+      this.doublePrimitiveNewField = doublePrimitiveNewField;
+    }
+  }
+
 }
