@@ -23,8 +23,6 @@ import org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.camunda.bpm.integrationtest.util.AbstractFoxPlatformIntegrationTest;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,10 +32,8 @@ public class TestConfigParsing extends AbstractFoxPlatformIntegrationTest {
 
   @Deployment
   public static WebArchive processArchive() {
-    return initWebArchiveDeployment().addAsLibraries(
-        ShrinkWrap.create(JavaArchive.class, "engine1.jar")
-            .addAsResource("boxed-properties-config.xml", "META-INF/processes.xml")
-    );
+    return initWebArchiveDeployment()
+            .addAsResource("boxed-properties-config.xml", "META-INF/processes.xml");
   }
 
   @Test
