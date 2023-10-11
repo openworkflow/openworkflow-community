@@ -63,7 +63,7 @@
           they usually define which modules are covered by the distro profile -->
         <module>spring-boot-starter</module>
 
-        <module>quarkus-extension</module>
+        <!--<module>quarkus-extension</module>-->
 
         <module>qa</module>
 
