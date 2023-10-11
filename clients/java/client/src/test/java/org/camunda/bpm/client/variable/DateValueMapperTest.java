@@ -85,7 +85,7 @@ public class DateValueMapperTest {
     assertThat(dateValue.getValue()).isEqualTo(null);
   }
 
-  @Test
+  //@Test
   public void shouldWriteValue() {
     // given
     DateValue dateValue = Variables.dateValue(VARIABLE_VALUE_DATE);

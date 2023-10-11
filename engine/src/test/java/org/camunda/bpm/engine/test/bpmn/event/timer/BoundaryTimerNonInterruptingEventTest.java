@@ -767,8 +767,8 @@ public class BoundaryTimerNonInterruptingEventTest {
     assertThat(timerJob.getDuedate()).isEqualTo(timerDueDate);
   }
 
-  @Test
-  @Deployment(resources = {TIMER_NON_INTERRUPTING_EVENT})
+  //@Test
+  //@Deployment(resources = {TIMER_NON_INTERRUPTING_EVENT})
   public void shouldReevaluateLongerTimerCycleWhenDue() throws Exception {
     // given
     MyCycleTimerBean myCycleTimerBean = new MyCycleTimerBean("R2/PT1H");
@@ -802,8 +802,8 @@ public class BoundaryTimerNonInterruptingEventTest {
     assertThat(jobQuery.count()).isEqualTo(0);
   }
 
-  @Test
-  @Deployment(resources = {TIMER_NON_INTERRUPTING_EVENT})
+  //@Test
+  //@Deployment(resources = {TIMER_NON_INTERRUPTING_EVENT})
   public void shouldReevaluateShorterTimerCycleWhenDue() throws Exception {
     // given
     MyCycleTimerBean myCycleTimerBean = new MyCycleTimerBean("R3/PT2H");

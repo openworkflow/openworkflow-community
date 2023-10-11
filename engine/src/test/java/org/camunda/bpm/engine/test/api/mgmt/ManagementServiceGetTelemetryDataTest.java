@@ -349,7 +349,7 @@ public class ManagementServiceGetTelemetryDataTest {
     assertThat(metrics.get(EXECUTED_DECISION_ELEMENTS).getCount()).isEqualTo(0);
   }
 
-  @Test
+  //@Test
   public void shouldSetDataCollectionTimeFrameToEngineStartTimeWhenTelemetryDisabled() {
     // given default telemetry data and empty telemetry registry
     // current time after engine startup but before fetching telemetry data

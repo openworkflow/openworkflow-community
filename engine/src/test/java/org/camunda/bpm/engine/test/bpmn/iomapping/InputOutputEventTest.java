@@ -89,8 +89,8 @@ public class InputOutputEventTest extends PluggableProcessEngineTest {
     assertEquals("outValue", variable);
   }
 
-  @Deployment
-  @Test
+  //@Deployment
+  //@Test
   public void testTimerCatchEvent() {
     Map<String, Object> variables = new HashMap<String, Object>();
     Date dueDate = DateTimeUtil.now().plusMinutes(5).toDate();

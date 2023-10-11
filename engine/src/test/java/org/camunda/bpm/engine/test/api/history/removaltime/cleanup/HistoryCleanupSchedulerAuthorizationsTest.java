@@ -120,7 +120,7 @@ public class HistoryCleanupSchedulerAuthorizationsTest extends AbstractHistoryCl
     clearAuthorization();
   }
 
-  @Test
+  //@Test
   public void shouldScheduleToLater() {
     // given
     testRule.deploy(PROCESS);

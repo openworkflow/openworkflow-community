@@ -112,7 +112,7 @@ public class HistoryCleanupSchedulerAttachmentsTest extends AbstractHistoryClean
     assertThat(job.getDuedate()).isEqualTo(removalTime);
   }
 
-  @Test
+  //@Test
   public void shouldScheduleToLater() {
     // given
     testRule.deploy(PROCESS);

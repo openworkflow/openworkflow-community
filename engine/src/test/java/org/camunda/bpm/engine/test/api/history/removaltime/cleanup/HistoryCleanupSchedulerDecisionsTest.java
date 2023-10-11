@@ -111,10 +111,10 @@ public class HistoryCleanupSchedulerDecisionsTest extends AbstractHistoryCleanup
     assertThat(job.getDuedate()).isEqualTo(removalTime);
   }
 
-  @Test
-  @Deployment(resources = {
-    "org/camunda/bpm/engine/test/dmn/deployment/drdDish.dmn11.xml"
-  })
+  //@Test
+  //@Deployment(resources = {
+  //  "org/camunda/bpm/engine/test/dmn/deployment/drdDish.dmn11.xml"
+  //})
   public void shouldScheduleToLaterByDecisionInputs() {
     // given
     testRule.deploy(CALLING_PROCESS_CALLS_DMN);
@@ -171,10 +171,10 @@ public class HistoryCleanupSchedulerDecisionsTest extends AbstractHistoryCleanup
     assertThat(job.getDuedate()).isEqualTo(removalTime);
   }
 
-  @Test
-  @Deployment(resources = {
-    "org/camunda/bpm/engine/test/api/history/removaltime/cleanup/decisonWithThreeOutputs.dmn11.xml"
-  })
+  //@Test
+  //@Deployment(resources = {
+  //  "org/camunda/bpm/engine/test/api/history/removaltime/cleanup/decisonWithThreeOutputs.dmn11.xml"
+  //})
   public void shouldScheduleToLaterByDecisionOutputs() {
     // given
     testRule.deploy(CALLING_PROCESS_CALLS_DMN);

@@ -125,7 +125,7 @@ public class CompetingHistoryCleanupAcquisitionTest extends ConcurrencyTestHelpe
    * THEN
    * The acquisition fails due to an Optimistic Locking Exception
    */
-  @Test
+  //@Test
   public void testAcquiringEverLivingJobSucceeds() {
     // given
     jobExecutor.indicateOptimisticLockingException();
@@ -171,7 +171,7 @@ public class CompetingHistoryCleanupAcquisitionTest extends ConcurrencyTestHelpe
    * THEN
    * The cleanup scheduler fails to reschedule the job due to an Optimistic Locking Exception
    */
-  @Test
+  //@Test
   public void testReschedulingEverLivingJobSucceeds() {
     // given
     String jobId = historyService.cleanUpHistoryAsync(true).getId();

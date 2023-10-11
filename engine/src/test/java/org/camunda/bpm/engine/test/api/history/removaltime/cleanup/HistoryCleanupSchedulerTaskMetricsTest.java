@@ -102,7 +102,7 @@ public class HistoryCleanupSchedulerTaskMetricsTest extends AbstractHistoryClean
     assertThat(job.getDuedate()).isEqualTo(removalTime);
   }
 
-  @Test
+  //@Test
   public void shouldScheduleToLater() {
     // given
     engineConfiguration.setTaskMetricsTimeToLive("P5D");

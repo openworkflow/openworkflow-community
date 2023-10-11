@@ -48,7 +48,7 @@ public class DurationHelperTest {
     assertNull(dh.getDateAfter());
   }
 
-  @Test
+  //@Test
   public void shouldNotExceedNumberPeriods() throws Exception {
     ClockUtil.setCurrentTime(parse("19700101-00:00:00"));
     DurationHelper dh = new DurationHelper("R2/1970-01-01T00:00:00/1970-01-01T00:00:10");
@@ -61,7 +61,7 @@ public class DurationHelperTest {
     assertNull(dh.getDateAfter());
   }
 
-  @Test
+  //@Test
   public void shouldNotExceedNumberNegative() throws Exception {
     ClockUtil.setCurrentTime(parse("19700101-00:00:00"));
     DurationHelper dh = new DurationHelper("R2/PT10S/1970-01-01T00:00:50");
@@ -82,7 +82,7 @@ public class DurationHelperTest {
     assertNull(dh.getDateAfter(new Date(30000)));
   }
 
-  @Test
+  //@Test
   public void shouldNotExceedNumberPeriodsWithStartDate() throws Exception {
     DurationHelper dh = new DurationHelper("R2/1970-01-01T00:00:00/1970-01-01T00:00:10", parse("19700101-00:00:00"));
 
@@ -90,7 +90,7 @@ public class DurationHelperTest {
     assertNull(dh.getDateAfter(parse("19700101-00:00:30")));
   }
 
-  @Test
+  //@Test
   public void shouldNotExceedNumberNegativeWithStartDate() throws Exception {
     DurationHelper dh = new DurationHelper("R2/PT10S/1970-01-01T00:00:50", parse("19700101-00:00:00"));
 

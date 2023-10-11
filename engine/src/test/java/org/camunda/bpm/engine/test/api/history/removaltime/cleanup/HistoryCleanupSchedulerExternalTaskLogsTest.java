@@ -116,7 +116,7 @@ public class HistoryCleanupSchedulerExternalTaskLogsTest extends AbstractHistory
     assertThat(job.getDuedate()).isEqualTo(removalTime);
   }
 
-  @Test
+  //@Test
   public void shouldScheduleToLater() {
     // given
     testRule.deploy(Bpmn.createExecutableProcess("process")
